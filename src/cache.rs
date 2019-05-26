@@ -1,4 +1,4 @@
-
+// Cache
 
 type Key = u64;
 type Value = String;
@@ -7,6 +7,7 @@ type HashType = std::collections::HashMap<Key, Value>;
 
 
 pub struct Cache {
+    capacity: usize,
     keys: ListType,
     key_to_value: HashType,
 }
@@ -15,9 +16,11 @@ pub struct Cache {
 impl Cache {
     pub fn new() -> Cache {
         println!("New Cache");
+        let capacity = 0;
         let keys = ListType::new();
         let k_to_v = HashType::new();
         Cache {
+            capacity: capacity,
             keys: keys,
             key_to_value: k_to_v,
         }
@@ -30,8 +33,14 @@ impl Cache {
         c
     }
 
+    pub fn capacity(&self) -> usize {
+        println!("Capacity");
+        self.capacity
+    }
+
     pub fn set_capacity(&mut self, size: usize) {
-        self.keys.truncate(size);
+        println!("Set Capacity {}", size);
+        self.capacity = size;
     }
 
     pub fn insert(&mut self, key: Key, value: Value) {
@@ -48,7 +57,9 @@ impl Cache {
 
             let pos = self.keys.iter().position(|k | k == &key);
             match pos {
-                Some(idx) => {self.keys.remove(idx);},
+                Some(idx) => {
+                    self.keys.remove(idx);
+                },
                 None => {}
             };
         }
@@ -58,10 +69,10 @@ impl Cache {
         self.key_to_value.len()
     }
 
+    // fn get() -> Value {}
+
     // fn get_size() -> u64 {}
 
-    // fn get() -> Value {}
-    
     // fn remove(num_elements) {}
 
     // fn remove(percent) {}
