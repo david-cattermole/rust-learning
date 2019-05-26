@@ -11,34 +11,55 @@ fn main() {
     let k4 = 126;
 
     // Create Cache
-    let cache_size = 1024;
-    let mut c1 = cache::Cache::new();
-    c1.set_capacity(cache_size);
-    let mut c2 = cache::Cache::with_capacity(cache_size);
-    assert_eq!(c1.capacity(), c2.capacity());
+    let cache_size = 3;
+    let mut c_a = cache::Cache::new();
+    c_a.set_capacity(cache_size);
+    let mut c_b = cache::Cache::with_capacity(cache_size);
+    assert_eq!(c_a.capacity(), c_b.capacity());
+    println!("============================");
 
     // Insert
-    c1.insert(k1, v1.clone());
-    c1.insert(k2, v2.clone());
-    let len1 = c1.len();
-    println!("Size of Cache: {}", len1);
+    c_a.insert(k1, v1.clone());
+    c_a.insert(k2, v2.clone());
+    let len1 = c_a.len();
+    println!("Size of CacheA: {}", len1);
     assert_eq!(len1, 2);
+    println!("============================");
 
     // Remove
-    c1.remove(k1);
-    c1.remove(k3);
-    let len2 = c1.len();
-    println!("Size of Cache: {}", len2);
+    c_a.remove(k1);
+    c_a.remove(k3);
+    let len2 = c_a.len();
+    println!("Size of CacheA: {}", len2);
     assert_eq!(len2, 1);
+    println!("============================");
 
     // Insert
-    c1.insert(k4, v4.clone());
-    c2.insert(k3, v3.clone());
-    c2.insert(k4, v4.clone());
-    let len3 = c1.len();
-    let len4 = c2.len();
-    println!("Size of Cache: {}", len3);
-    println!("Size of Cache: {}", len4);
+    c_a.insert(k4, v4.clone());
+    c_b.insert(k3, v3.clone());
+    c_b.insert(k4, v4.clone());
+    let len3 = c_a.len();
+    let len4 = c_b.len();
+    println!("Size of CacheA: {}", len3);
+    println!("Size of CacheB: {}", len4);
     assert_eq!(len3, 2);
     assert_eq!(len4, 2);
+    println!("============================");
+
+    // Insert all keys to both caches, test the eviction.
+    c_a.insert(k1, v1.clone());
+    c_a.insert(k2, v2.clone());
+    c_a.insert(k3, v3.clone());
+    c_a.insert(k4, v4.clone());
+    let len5 = c_a.len();
+    println!("Size of CacheA: {}", len5);
+
+    c_b.insert(k1, v1.clone());
+    c_b.insert(k2, v2.clone());
+    c_b.insert(k3, v3.clone());
+    c_b.insert(k4, v4.clone());
+    let len6 = c_b.len();
+    println!("Size of CacheB: {}", len6);
+    assert_eq!(len5, 3);
+    assert_eq!(len6, 3);
 }
