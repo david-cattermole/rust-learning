@@ -4,4 +4,9 @@ version = "0.1.0"
 authors = ["david-cattermole <cattermole91@gmail.com>"]
 edition = "2018"
 
+[lib]
+name = "rustlearning"
+crate_type = ["dylib"]
+
 [dependencies]
+libc = "0.2.0"
