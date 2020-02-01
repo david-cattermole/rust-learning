@@ -16,7 +16,7 @@ mod tests {
 
 // Output a function for usage in C.
 #[no_mangle]
-pub extern "C" fn my_exported_func(num: c_int) -> c_int {
+pub extern "C" fn my_rust_func(num: c_int) -> c_int {
     println!("Rust Number is {}", num);
     num + 1
 }

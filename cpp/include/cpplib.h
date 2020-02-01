@@ -4,7 +4,10 @@
 #define CPP_LIB_H
 
 extern "C" {
-     void my_cpp_function();
+    int my_cpp_func(int num);
+
+    void create_stack();
 }
+
 
 #endif // CPP_LIB_H

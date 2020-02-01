@@ -5,6 +5,6 @@
 
 extern "C" {
 
-int my_exported_func(int num);
+int my_rust_func(int num);
 
 } // extern "C"
