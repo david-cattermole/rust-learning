@@ -6,16 +6,13 @@ type Value = String;
 type ListType = std::collections::VecDeque<Key>;
 type HashType = std::collections::HashMap<Key, (USize, Value)>;
 
-
 pub struct Cache {
     capacity: USize,
     keys: ListType,
     key_to_value: HashType,
 }
 
-
 impl Cache {
-
     pub fn new() -> Cache {
         println!("New Cache");
         Cache {
@@ -58,8 +55,8 @@ impl Cache {
         match key {
             Some(k) => {
                 self.key_to_value.remove(&k);
-            },
-            None => {panic!("Cannot evict, key does not exist.")}
+            }
+            None => panic!("Cannot evict, key does not exist."),
         };
     }
 
@@ -68,11 +65,11 @@ impl Cache {
         let ok = self.key_to_value.contains_key(&key);
         if ok == true {
             self.key_to_value.remove(&key);
-            let pos = self.keys.iter().position(|k | k == &key);
+            let pos = self.keys.iter().position(|k| k == &key);
             match pos {
                 Some(idx) => {
                     self.keys.remove(idx);
-                },
+                }
                 None => {}
             };
         }
