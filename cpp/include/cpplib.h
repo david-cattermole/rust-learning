@@ -1,13 +1,19 @@
-// Header file for C function usage.
+/* Header file for C function usage. */
 
 #ifndef CPP_LIB_H
 #define CPP_LIB_H
 
+#ifdef __cplusplus
 extern "C" {
-    int my_cpp_func(int num);
+#endif /* __cplusplus */
 
-    void create_stack();
+int my_cpp_func(int num);
+
+void create_stack();
+
+#ifdef __cplusplus
 }
+#endif /* __cplusplus */
 
 
 #endif // CPP_LIB_H

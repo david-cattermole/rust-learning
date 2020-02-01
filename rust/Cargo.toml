@@ -8,5 +8,9 @@ edition = "2018"
 name = "rustlearningrs"
 crate_type = ["cdylib"]
 
+[build-dependencies]
+bindgen = "0.51.1"
+cc = "1.0"
+
 [dependencies]
 libc = "0.2.0"

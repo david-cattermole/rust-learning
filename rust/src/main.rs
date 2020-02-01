@@ -1,4 +1,7 @@
+extern crate libc;
+use libc::c_int;
 mod cache;
+// mod lib;
 
 fn main() {
     let v1 = String::from("My String 001");
@@ -62,4 +65,13 @@ fn main() {
     println!("Size of CacheB: {}", len6);
     assert_eq!(len5, 3);
     assert_eq!(len6, 3);
+
+    // let x: c_int = 100;
+    // let y = lib::my_cpp_func_safe(x);
+    // println!("X: {}", x);
+    // println!("Y: {}", y);
+
+    // unsafe {
+    //     lib::create_stack();
+    // }
 }
