@@ -1,8 +1,9 @@
 // Run a Rust function.
 #include <vector>
 #include <rustlib.h>
+#include <cpplib.h>
 
-void main() {
+void my_cpp_function() {
      std::vector<int> my_vec;
      my_vec.push_back(1);
      my_vec.push_back(2);

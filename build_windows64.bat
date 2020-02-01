@@ -14,7 +14,7 @@ CHDIR %ROOT%
 :: Build Rust
 CHDIR rust
 :: cargo install --force cbindgen
-cbindgen --config cbindgen.toml --crate rustlearningrs --output include/lib.h
+cbindgen --config cbindgen.toml --crate rustlearningrs --output include/rustlib.h
 cargo build --release
 CHDIR "%ROOT%"
 
